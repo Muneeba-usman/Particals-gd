@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://n3i5kf7xwku4"]
+
+[ext_resource type="Texture2D" uid="uid://dafkfhe551nhd" path="res://fire.png" id="1_2pqqt"]
+[ext_resource type="Texture2D" uid="uid://c8a6csml48hwr" path="res://wood.png" id="2_5ltu8"]
+
+[sub_resource type="Curve" id="Curve_5ltu8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.70428), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x6ecg"]
+curve = SubResource("Curve_5ltu8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_icfi2"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(80, 30, 1)
+emission_shape = 3
+emission_box_extents = Vector3(0.7, 2, 1)
+angle_min = 1.07288e-05
+angle_max = 180.0
+gravity = Vector3(0, -98, 0)
+scale_min = 0.3
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_x6ecg")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.25
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(455, 304)
+amount = 350
+texture = ExtResource("1_2pqqt")
+lifetime = 1.64
+process_material = SubResource("ParticleProcessMaterial_icfi2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(614, 420)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2_5ltu8")
